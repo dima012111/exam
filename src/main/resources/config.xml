@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+default-lazy-init="true"
+>
+<import resource="interface.xml"></import>
+
+
+
+    <bean id="t1000" class="dima.ModelT1000" scope="prototype" parent="baseModel" >
+    <constructor-arg value="1996" index="3" type="int"></constructor-arg>
+    <constructor-arg value="modelT1000" index="2" type="java.lang.String"></constructor-arg>
+    </bean>
+<bean id="baseModel" abstract="true">
+    <constructor-arg ref="sonyHand"></constructor-arg>
+    <constructor-arg ref="sonyLeg"></constructor-arg>
+</bean>
+
+    <bean id="conv" class="dima.RobotFactoryAbstract">
+        <lookup-method name="create" bean="t1000"></lookup-method>
+    </bean>
+  </beans>
